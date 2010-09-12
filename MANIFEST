@@ -1,0 +1,27 @@
+.eproject
+.gitignore
+Changes
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+lib/AnyEvent/Inotify/EventReceiver.pm
+lib/AnyEvent/Inotify/EventReceiver/Callback.pm
+lib/AnyEvent/Inotify/EventReceiver/Debug.pm
+lib/AnyEvent/Inotify/EventReceiver/Null.pm
+lib/AnyEvent/Inotify/Simple.pm
+Makefile.PL
+MANIFEST			This list of files
+MANIFEST.SKIP
+META.yml
+t/Create.pm
+t/filtered-beforehand.t
+t/filtered.t
+t/lib/Base.pm
+t/MoveDir.pm
+t/MoveFile.pm
+t/run.t
