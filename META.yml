@@ -3,9 +3,11 @@ abstract: 'monitor a directory tree in a non-blocking way'
 author:
   - 'Jonathan Rockway C<< <jrockway@cpan.org> >>'
 build_requires:
+  Directory::Scratch: 0
   EV: 0
   ExtUtils::MakeMaker: 6.42
   MooseX::Declare: 0
+  Test::Exception: 0
   Test::More: 0
   Test::Sweet: 0
 configure_requires:
@@ -25,8 +27,9 @@ requires:
   AnyEvent: 0
   File::Next: 0
   Linux::Inotify2: 0
+  Moose: 0
   MooseX::FileAttribute: 0
   MooseX::Types::Path::Class: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.02
