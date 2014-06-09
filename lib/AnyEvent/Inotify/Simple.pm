@@ -1,7 +1,8 @@
 package AnyEvent::Inotify::Simple;
+$AnyEvent::Inotify::Simple::VERSION = '0.03';
 use Moose;
 
-our $VERSION = '0.02';
+# ABSTRACT: monitor a directory tree in a non-blocking way
 
 use MooseX::FileAttribute;
 use MooseX::Types::Moose qw(HashRef CodeRef);
@@ -193,8 +194,8 @@ sub handle_move_to {
     confess "Invalid move cookie '$cookie' (moved to '$to')"
         unless $from;
 
-    my $abs = $self->rel2abs($to);
-    $self->_watch_directory($abs) if -d $abs;
+    my $abs = eval { $self->rel2abs($to) };
+    $self->_watch_directory($abs) if $abs && -d $abs;
 
     $self->handle_move($from, $to);
 }
@@ -202,15 +203,16 @@ sub handle_move_to {
 # inject our magic
 before 'handle_create' => sub {
     my ($self, $dir) = @_;
-    my $abs = $self->rel2abs($dir);
-    return unless -d $abs;
+    my $abs = eval { $self->rel2abs($dir) };
+    return unless $abs && -d $abs;
     $self->_watch_directory($abs);
 };
 
 sub DEMOLISH {
     my $self = shift;
-
+    return unless $self->inotify;
     for my $w (values %{$self->inotify->{w}}){
+        next unless $w;
         $w->cancel;
     }
 }
@@ -222,6 +224,10 @@ __END__
 =head1 NAME
 
 AnyEvent::Inotify::Simple - monitor a directory tree in a non-blocking way
+
+=head1 VERSION
+
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -270,6 +276,8 @@ L<http://github.com/jrockway/anyevent-inotify-simple>
 =head1 AUTHOR
 
 Jonathan Rockway C<< <jrockway@cpan.org> >>
+
+Current maintainer is Robert Norris C<< <rob@eatenbyagrue.org> >>
 
 =head1 COPYRIGHT
 

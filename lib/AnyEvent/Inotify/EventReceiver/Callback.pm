@@ -1,4 +1,5 @@
 package AnyEvent::Inotify::EventReceiver::Callback;
+$AnyEvent::Inotify::EventReceiver::Callback::VERSION = '0.03';
 use Moose;
 #use namespace::autoclean;
 
@@ -30,6 +31,12 @@ __END__
 =head1 NAME
 
 AnyEvent::Inotify::EventReceiver::Callback - delegates everything to a coderef
+
+=head1 VERSION
+
+version 0.03
+
+=head1 ABSTRACT
 
 =head1 INITARGS
 

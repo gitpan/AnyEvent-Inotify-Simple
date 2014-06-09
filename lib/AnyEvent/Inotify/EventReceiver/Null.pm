@@ -1,4 +1,5 @@
 package AnyEvent::Inotify::EventReceiver::Null;
+$AnyEvent::Inotify::EventReceiver::Null::VERSION = '0.03';
 use Moose;
 use namespace::autoclean;
 
@@ -21,3 +22,8 @@ __END__
 
 AnyEvent::Inotify::EventReceiver::Null - does nothing
 
+=head1 VERSION
+
+version 0.03
+
+=head1 ABSTRACT
